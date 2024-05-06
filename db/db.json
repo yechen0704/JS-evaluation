@@ -1,18 +1,5 @@
 {
-  "cart": [
-    {
-      "itemName": "apple",
-      "itemId": "1",
-      "itemAmount": 24,
-      "id": 1
-    },
-    {
-      "itemName": "peach",
-      "itemId": "2",
-      "itemAmount": 24,
-      "id": 2
-    }
-  ],
+  "cart": [],
   "inventory": [
     {
       "content": "apple",

@@ -109,11 +109,11 @@ const API = (() => {
     }
   };
 
-  const checkout = () => {
+  const checkout = async () => {
     // you don't need to add anything here
     return getCart().then((data) =>
       Promise.all(data.map((item) => deleteFromCart(item.id)))
-    );
+    ); x
   };
 
   return {
@@ -250,7 +250,7 @@ const Controller = ((model, view) => {
 
   const setupEventListeners = () => {
     const inventoryItems = document.querySelector(".inventory-items");
-    const cartItems = document.querySelector(".cart-items");
+    const cartItems = document.querySelector(".cart-container");
     inventoryItems.addEventListener("click", async (event) => {
       const target = event.target;
       if (target.classList.contains("add-btn")) {
@@ -293,6 +293,12 @@ const Controller = ((model, view) => {
         state.cart = state.cart.filter(item => item.itemId !== itemId);
         view.renderCart(state.cart);
 
+      } else if (target.classList.contains("checkout-btn")) {
+        //console.log("checkout detect");
+        API.checkout();
+        fetchData();
+        state.cart = null;
+        view.renderCart();
       }
     });
   }
